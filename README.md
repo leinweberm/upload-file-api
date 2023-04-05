@@ -1,3 +1,4 @@
-1. run `docker-compose up` from /
-2. run `node server.js` from /server
-3. test API `http://localhost:3000/upload` || `http://localhost:3000/get-files`
+1. run `docker-compose up` in `/`
+2. run `npm install` in `/server`
+3. run `node server.js` in `/server`
+4. test API `http://localhost:3000/upload` || `http://localhost:3000/get-files`
