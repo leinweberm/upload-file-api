@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+    db:
+        image: postgres:15-alpine
+        restart: always
+        environment:
+            POSTGRES_USER: ${POSTGRES_USER}
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+            POSTGRES_DB: ${POSTGRES_DB}
+            POSTGRES_HOST: ${POSTGRES_HOST}
+            POSTGRES_PORT: ${POSTGRES_PORT}
+        volumes:
+            - ./db.sql:/docker-entrypoint-initdb.d/db.sql
+        ports:
+            - '5432:5432'
+        networks:
+            app-net:
+                ipv4_address: 172.16.238.10
+        healthcheck:
+            test: ['CMD', 'pg_isready', '-U', 'pgadmin']
+
+networks:
+    app-net:
+        driver: bridge
